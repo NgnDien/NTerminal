@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,11 +8,16 @@ using System.Windows.Forms;
 
 namespace NTerminal
 {
-    public partial class Form1 : Form
+    public class CConfigs
     {
-        public Form1()
+        public CConfigs()
         {
-            InitializeComponent();
+            Items = new List<CItems>();
+            FML = new Point();
         }
+
+        public List<CItems> Items { get; set; }
+
+        public Point FML { get; set; }
     }
 }
