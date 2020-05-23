@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTerminal", "NTerminal\NTerminal.csproj", "{1D7E871B-B9C6-4EC4-9206-ECC3D9947667}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "setup", "setup\setup.csproj", "{BF03534A-497C-48FD-BD90-5E504346D583}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "uninstall", "uninstall\uninstall.csproj", "{0C205C84-CF4C-425B-8CB5-12238A00DED3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{1D7E871B-B9C6-4EC4-9206-ECC3D9947667}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D7E871B-B9C6-4EC4-9206-ECC3D9947667}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D7E871B-B9C6-4EC4-9206-ECC3D9947667}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF03534A-497C-48FD-BD90-5E504346D583}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF03534A-497C-48FD-BD90-5E504346D583}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF03534A-497C-48FD-BD90-5E504346D583}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF03534A-497C-48FD-BD90-5E504346D583}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C205C84-CF4C-425B-8CB5-12238A00DED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C205C84-CF4C-425B-8CB5-12238A00DED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C205C84-CF4C-425B-8CB5-12238A00DED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C205C84-CF4C-425B-8CB5-12238A00DED3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
