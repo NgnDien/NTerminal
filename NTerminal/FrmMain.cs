@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Xml.Serialization;
+using System.Threading;
 
 namespace NTerminal
 {
@@ -128,6 +130,41 @@ namespace NTerminal
         }
         #endregion Move form
 
+        private void SafeShutdown(eShutdownState state, int minuteTimeout)
+        {
+            Program.ShutdownState = state;
+            if(minuteTimeout != 0)
+            {
+                tmrShutdown = new System.Windows.Forms.Timer()
+                {
+                    Interval = minuteTimeout * 60000,
+                };
+                tmrShutdown.Tick += TmrShutdown_Tick;
+                tmrShutdown.Tag = 0;
+                tmrShutdown.Enabled = true;
+                MessageBox.Show($"Máy tính sẽ {state} sau {minuteTimeout} phút nữa");
+            }
+            else
+            {
+                TimeOut();
+            }
+        }
+
+        private void TmrShutdown_Tick(object sender, EventArgs e)
+        {
+            if((int)tmrShutdown.Tag == 1)
+            {
+                tmrShutdown.Stop();
+                TimeOut();
+            }
+            tmrShutdown.Tag = (int)tmrShutdown.Tag + 1;
+        }
+
+        private void TimeOut()
+        {
+            this.Close();
+        }
+
         private void FrmMain_Shown(object sender, EventArgs e)
         {
             LoadCfg(); 
@@ -170,58 +207,60 @@ namespace NTerminal
 
         private void Item_Click(object sender, MouseEventArgs e)
         {
-            switch(e.Button)
+            if((sender as ToolStripMenuItem)?.Tag?.ToString() != "")
             {
-                case MouseButtons.Left:
-                    {
-                        try
+                switch(e.Button)
+                {
+                    case MouseButtons.Left:
                         {
-                            if(Directory.Exists((sender as ToolStripMenuItem)?.Tag.ToString()))
+                            try
                             {
-                                Process.Start("explorer", $"\"{(sender as ToolStripMenuItem)?.Tag.ToString()}\"");
-                                return;
+                                if(Directory.Exists((sender as ToolStripMenuItem)?.Tag.ToString()))
+                                {
+                                    Process.Start("explorer", $"\"{(sender as ToolStripMenuItem)?.Tag.ToString()}\"");
+                                    return;
+                                }
+                                if(File.Exists((sender as ToolStripMenuItem)?.Tag.ToString()))
+                                {
+                                    Process.Start("explorer", $"\"{(sender as ToolStripMenuItem)?.Tag.ToString()}\"");
+                                    return;
+                                }
+                                MessageBox.Show($"Thư mục hoặc tệp tin không tồn tại\n{(sender as ToolStripMenuItem)?.Tag.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                             }
-                            if(File.Exists((sender as ToolStripMenuItem)?.Tag.ToString()))
+                            catch
                             {
-                                Process.Start("explorer", $"\"{(sender as ToolStripMenuItem)?.Tag.ToString()}\"");
-                                return;
+                                MessageBox.Show("Không thể mở {(sender as ToolStripMenuItem)?.Tag.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                             }
-                            MessageBox.Show($"Thư mục hoặc tệp tin không tồn tại\n{(sender as ToolStripMenuItem)?.Tag.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                            break;
                         }
-                        catch
+                    case MouseButtons.Right:
                         {
-                            MessageBox.Show("Không thể mở {(sender as ToolStripMenuItem)?.Tag.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
-                        }  
-                        break;
-                    }
-                case MouseButtons.Right:
-                    {
-                        try
-                        {
-                            if(Directory.Exists((sender as ToolStripMenuItem)?.Tag.ToString()))
+                            try
                             {
-                                Process.Start("explorer", $"\"{DirPathOf((sender as ToolStripMenuItem)?.Tag.ToString())}\"");
-                                return;
+                                if(Directory.Exists((sender as ToolStripMenuItem)?.Tag.ToString()))
+                                {
+                                    Process.Start("explorer", $"\"{DirPathOf((sender as ToolStripMenuItem)?.Tag.ToString())}\"");
+                                    return;
+                                }
+                                if(File.Exists((sender as ToolStripMenuItem)?.Tag.ToString()))
+                                {
+                                    Process.Start("explorer", $"\"{DirPathOf((sender as ToolStripMenuItem)?.Tag.ToString())}\"");
+                                    return;
+                                }
+                                MessageBox.Show($"Thư mục hoặc tập tin không tồn tại\n{(sender as ToolStripMenuItem)?.Tag.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                             }
-                            if(File.Exists((sender as ToolStripMenuItem)?.Tag.ToString()))
+                            catch
                             {
-                                Process.Start("explorer", $"\"{DirPathOf((sender as ToolStripMenuItem)?.Tag.ToString())}\"");
-                                return;
+                                MessageBox.Show("Không thể mở thư mục chứa {(sender as ToolStripMenuItem)?.Tag.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                             }
-                            MessageBox.Show($"Thư mục hoặc tập tin không tồn tại\n{(sender as ToolStripMenuItem)?.Tag.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                            break;
                         }
-                        catch
+                    default:
                         {
-                            MessageBox.Show("Không thể mở thư mục chứa {(sender as ToolStripMenuItem)?.Tag.ToString()}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                            return;
                         }
-                        break;
-                    }
-                default:
-                    {
-                        return;
-                    }
-            }    
-            
+                }
+            }
              
         }
 
@@ -235,7 +274,49 @@ namespace NTerminal
             MessageBox.Show("Created by NgnDien with C# base .Net Framework 4.7.1\nSource code: GitHub.com/NgnDien/NTerminal", "About", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
 
-        
+        private void cậpNhậtThờiGianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ThoiGian = DateTime.Now;
+        }
 
+        private void restartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SafeShutdown(eShutdownState.Restart, 0);
+        }
+
+        private void shutDownToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SafeShutdown(eShutdownState.Shutdown, 0);
+        }
+
+        private void TxtShutdowntoolStripTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar != (char)13)
+            {
+                return;
+            }
+            try
+            {
+                SafeShutdown(eShutdownState.Shutdown, int.Parse(txtShutdowntoolStripTextBox.Text));
+            }
+            catch
+            {
+                SafeShutdown(eShutdownState.Shutdown, 0);
+            }
+        }
+
+        private void TxtRestarttoolStripTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar != (char)13)
+                return;
+            try
+            {
+                SafeShutdown(eShutdownState.Restart, int.Parse(txtRestarttoolStripTextBox.Text));
+            }
+            catch
+            {
+                SafeShutdown(eShutdownState.Restart, 0);
+            }
+        }
     }
 }
