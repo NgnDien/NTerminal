@@ -1,16 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
-using System.Xml.Serialization;
-using System.Threading;
 
 namespace NTerminal
 {
@@ -289,7 +281,7 @@ namespace NTerminal
             SafeShutdown(eShutdownState.Shutdown, 0);
         }
 
-        private void TxtShutdowntoolStripTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtShutdownToolStripTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar != (char)13)
             {
@@ -305,7 +297,7 @@ namespace NTerminal
             }
         }
 
-        private void TxtRestarttoolStripTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void TxtRestartToolStripTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar != (char)13)
                 return;

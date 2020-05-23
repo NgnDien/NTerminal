@@ -46,12 +46,12 @@
             this.txtRestarttoolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.tmrThoiGian = new System.Windows.Forms.Timer(this.components);
             this.tmrUpdateTime = new System.Windows.Forms.Timer(this.components);
-            //this.tmrShutdown = new System.Windows.Forms.Timer(this.components);
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblGio
             // 
+            this.lblGio.BackColor = System.Drawing.Color.Transparent;
             this.lblGio.Font = new System.Drawing.Font("Anderson Four Feather Falls", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lblGio.Location = new System.Drawing.Point(0, 0);
             this.lblGio.Name = "lblGio";
@@ -67,6 +67,7 @@
             // 
             // lblNgay
             // 
+            this.lblNgay.BackColor = System.Drawing.Color.Transparent;
             this.lblNgay.Font = new System.Drawing.Font("Book Antiqua", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgay.Location = new System.Drawing.Point(0, 17);
             this.lblNgay.Name = "lblNgay";
@@ -139,36 +140,40 @@
             // cậpNhậtThờiGianToolStripMenuItem
             // 
             this.cậpNhậtThờiGianToolStripMenuItem.Name = "cậpNhậtThờiGianToolStripMenuItem";
-            this.cậpNhậtThờiGianToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.cậpNhậtThờiGianToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.cậpNhậtThờiGianToolStripMenuItem.Text = "Cậ&p nhật thời gian";
+            this.cậpNhậtThờiGianToolStripMenuItem.ToolTipText = "Cập nhật lại thời gian";
             this.cậpNhậtThờiGianToolStripMenuItem.Click += new System.EventHandler(this.cậpNhậtThờiGianToolStripMenuItem_Click);
             // 
             // tùyChỉnhToolStripMenuItem
             // 
             this.tùyChỉnhToolStripMenuItem.Name = "tùyChỉnhToolStripMenuItem";
-            this.tùyChỉnhToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.tùyChỉnhToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.tùyChỉnhToolStripMenuItem.Text = "Tùy &chỉnh";
+            this.tùyChỉnhToolStripMenuItem.ToolTipText = "Chỉnh sửa danh sách chương trình";
             this.tùyChỉnhToolStripMenuItem.Click += new System.EventHandler(this.TùyChỉnhToolStripMenuItem_Click);
             // 
             // thôngTinToolStripMenuItem
             // 
             this.thôngTinToolStripMenuItem.Name = "thôngTinToolStripMenuItem";
             this.thôngTinToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.thôngTinToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.thôngTinToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.thôngTinToolStripMenuItem.Text = "Thông t&in";
+            this.thôngTinToolStripMenuItem.ToolTipText = "Thông tin chương trình";
             this.thôngTinToolStripMenuItem.Click += new System.EventHandler(this.thôngTinToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // thoátToolStripMenuItem
             // 
             this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
             this.thoátToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.thoátToolStripMenuItem.Text = "&Thoát";
+            this.thoátToolStripMenuItem.ToolTipText = "Thoát chương trình";
             this.thoátToolStripMenuItem.Click += new System.EventHandler(this.ThoátToolStripMenuItem_Click);
             // 
             // safeShutdownToolStripMenuItem
@@ -177,15 +182,17 @@
             this.shutDownToolStripMenuItem,
             this.restartToolStripMenuItem});
             this.safeShutdownToolStripMenuItem.Name = "safeShutdownToolStripMenuItem";
-            this.safeShutdownToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.safeShutdownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.safeShutdownToolStripMenuItem.Text = "&Safe Shutdown";
+            this.safeShutdownToolStripMenuItem.ToolTipText = "Tắt máy an toàn";
+            this.safeShutdownToolStripMenuItem.Click += new System.EventHandler(this.shutDownToolStripMenuItem_Click);
             // 
             // shutDownToolStripMenuItem
             // 
             this.shutDownToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.txtShutdowntoolStripTextBox});
             this.shutDownToolStripMenuItem.Name = "shutDownToolStripMenuItem";
-            this.shutDownToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.shutDownToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.shutDownToolStripMenuItem.Text = "&Shut down";
             this.shutDownToolStripMenuItem.Click += new System.EventHandler(this.shutDownToolStripMenuItem_Click);
             // 
@@ -194,14 +201,15 @@
             this.txtShutdowntoolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtShutdowntoolStripTextBox.Name = "txtShutdowntoolStripTextBox";
             this.txtShutdowntoolStripTextBox.Size = new System.Drawing.Size(100, 23);
-            this.txtShutdowntoolStripTextBox.KeyPress += this.TxtShutdowntoolStripTextBox_KeyPress;
+            this.txtShutdowntoolStripTextBox.ToolTipText = "Hẹn giờ Shut down (tính bằng giây)";
+            this.txtShutdowntoolStripTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtShutdownToolStripTextBox_KeyPress);
             // 
             // restartToolStripMenuItem
             // 
             this.restartToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.txtRestarttoolStripTextBox});
             this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
-            this.restartToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.restartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.restartToolStripMenuItem.Text = "&Restart";
             this.restartToolStripMenuItem.Click += new System.EventHandler(this.restartToolStripMenuItem_Click);
             // 
@@ -210,7 +218,8 @@
             this.txtRestarttoolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtRestarttoolStripTextBox.Name = "txtRestarttoolStripTextBox";
             this.txtRestarttoolStripTextBox.Size = new System.Drawing.Size(100, 23);
-            this.txtRestarttoolStripTextBox.KeyPress += this.TxtRestarttoolStripTextBox_KeyPress;
+            this.txtRestarttoolStripTextBox.ToolTipText = "Hẹn giờ Restart (tính bằng giây)";
+            this.txtRestarttoolStripTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtRestartToolStripTextBox_KeyPress);
             // 
             // tmrThoiGian
             // 
@@ -226,6 +235,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.BackColor = System.Drawing.Color.LightYellow;
             this.ClientSize = new System.Drawing.Size(136, 39);
             this.ControlBox = false;
             this.Controls.Add(this.toolStrip);

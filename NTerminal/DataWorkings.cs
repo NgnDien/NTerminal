@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace NTerminal
 {
@@ -17,7 +12,7 @@ namespace NTerminal
         {
             if(!CJsonWorkings.Write(DataWorkings.Config, DataWorkings.FileConfig))
             {
-                MessageBox.Show("không thể ghi file");
+                MessageBox.Show("không thể ghi file cấu hình");
             }
         }
     }
