@@ -149,7 +149,7 @@ namespace NTerminal
                 tmrShutdown.Stop();
                 TimeOut();
             }
-            tmrShutdown.Tag = (int)tmrShutdown.Tag + 1;
+            tmrShutdown.Tag = 1;
         }
 
         private void TimeOut()

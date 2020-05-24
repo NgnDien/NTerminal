@@ -18,10 +18,10 @@ namespace NTerminal
             switch(ShutdownState)
             {
                 case eShutdownState.Shutdown:
-                    Process.Start($"shutdown -s");
+                    Process.Start("shutdown", "-s");
                     break;
                 case eShutdownState.Restart:
-                    Process.Start($"shutdown -r");
+                    Process.Start("shutdown", "-r");
                     break;
                 default:
                     break;

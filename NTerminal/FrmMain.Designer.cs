@@ -201,7 +201,7 @@
             this.txtShutdowntoolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtShutdowntoolStripTextBox.Name = "txtShutdowntoolStripTextBox";
             this.txtShutdowntoolStripTextBox.Size = new System.Drawing.Size(100, 23);
-            this.txtShutdowntoolStripTextBox.ToolTipText = "Hẹn giờ Shut down (tính bằng giây)";
+            this.txtShutdowntoolStripTextBox.ToolTipText = "Hẹn giờ Shut down (tính bằng phút)";
             this.txtShutdowntoolStripTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtShutdownToolStripTextBox_KeyPress);
             // 
             // restartToolStripMenuItem
@@ -218,7 +218,7 @@
             this.txtRestarttoolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtRestarttoolStripTextBox.Name = "txtRestarttoolStripTextBox";
             this.txtRestarttoolStripTextBox.Size = new System.Drawing.Size(100, 23);
-            this.txtRestarttoolStripTextBox.ToolTipText = "Hẹn giờ Restart (tính bằng giây)";
+            this.txtRestarttoolStripTextBox.ToolTipText = "Hẹn giờ Restart (tính bằng phút)";
             this.txtRestarttoolStripTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtRestartToolStripTextBox_KeyPress);
             // 
             // tmrThoiGian
