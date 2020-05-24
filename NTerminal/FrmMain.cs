@@ -192,6 +192,7 @@ namespace NTerminal
                 if(frmCustoms.ShowDialog() == DialogResult.OK)
                 {
                     //đọc dữ liệu của config.Items rồi chèn vào btnOpen.Items
+                    btnOpen.DropDownItems.Clear();
                     AddItem(btnOpen.DropDownItems, DataWorkings.Config.Items);
                 }    
             }    

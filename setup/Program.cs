@@ -2,6 +2,7 @@
 using System.Text;
 using System.IO;
 using Microsoft.Win32;
+using System.Diagnostics;
 
 namespace setup
 {
@@ -39,8 +40,9 @@ namespace setup
                 ErrorMsg();
                 return;
             }
-            //Process.Start($"REG ADD \"HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\" /v nter /t REG_SZ /d fiw");
-            Console.WriteLine("Cài đặt thành công");
+            Console.WriteLine("Cài đặt thành công, khởi động NTer");
+            Process.Start("nter");
+            Console.WriteLine("Cài đặt hoàn tất, nhấn phím bất kì để thoát");
             Console.ReadKey();
             return;
         }
