@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System;
 
 namespace NTerminal
 {
@@ -6,7 +7,7 @@ namespace NTerminal
     {
         public static CConfigs Config { get; set; } = new CConfigs();
 
-        public static string FileConfig { get; } = @"config.json";
+        public static string FileConfig { get; } = $@"{Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)}\nter.cfg";
 
         public static void WriteConfig()
         {

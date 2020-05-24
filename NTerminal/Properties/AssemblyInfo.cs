@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("NTer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Truy cập nhanh đến chương trình, phần mềm")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NTech")]
 [assembly: AssemblyProduct("NTerminal")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0520.23")]
-[assembly: AssemblyFileVersion("1.0.0520.23")]
+[assembly: AssemblyVersion("1.1.0520.24")]
+[assembly: AssemblyFileVersion("1.1.0520.24")]
